@@ -3,11 +3,11 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // Khởi tạo session
-session_start();
+//session_start();
 // Gán biến page giống với tên file
 $page = basename($_SERVER['SCRIPT_NAME'], '.php');
 // Kết nối CSDL
-$db = new PDO('mysql:host=localhost:3306;dbname=id2899612_nhom3;charset=utf8', 'adminh', 'adminh');
+$db = new PDO('mysql:host=localhost;dbname=id4067370_ltw1;charset=utf8', 'id4067370_nhom3', 'nhom3');
 // Kiểm tra thông tin người dùng
 $currentUser = null;
 require_once 'functions.php';

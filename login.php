@@ -1,61 +1,37 @@
-<?php
-session_start();
- 
-?>
- 
->
 <?php 
-
-require_once("connection.php");
-	
-if (isset($_POST["btn_submit"])) {
-	
-	$username = $_POST["username"];
-	$password = $_POST["password"];
-	
-	$username = strip_tags($username);
-	$username = addslashes($username);
-	$password = strip_tags($password);
-	$password = addslashes($password);
-	if ($username == "" || $password =="") {
-		echo "username hoặc password bạn không được để trống!";
-	}else{
-		$sql = "select * from users where username = '$username' and password = '$password' ";
-		$query = mysqli_query($conn,$sql);
-		$num_rows = mysqli_num_rows($query);
-		if ($num_rows==0) {
-			echo "tên đăng nhập hoặc mật khẩu không đúng !";
-		}else{
-			
-			while ( $data = mysqli_fetch_array($query) ) {
-	    		$_SESSION["user_id"] = $data["id"];
-				$_SESSION['username'] = $data["username"];
-				$_SESSION["email"] = $data["email"];
-				$_SESSION["fullname"] = $data["fullname"];
-				
-	    	}
-			
-                
-			header('Location: index.php');
-		}
-	}
+require_once 'connection.php';
+$success = true;
+if (!empty($_POST['email']) && !empty($_POST['password'])) {  
+  $user = findUserByEmail($_POST['email']);
+  if ($user) {
+    if (password_verify($_POST['password'], $user['password'])) {
+      $success = true;
+      $_SESSION['userId'] = $user['id'];
+      header('Location: index.php');
+      exit();
+    } else {
+      $success = false;
+    }      
+  } else {
+    $success = false;
+  }
 }
 ?>
-	<form method="POST" action="login.php">
-	<fieldset>
-	    <legend>Đăng nhập</legend>
-	    	<table>
-	    		<tr>
-	    			<td>Username</td>
-	    			<td><input type="text" name="username" size="30"></td>
-	    		</tr>
-	    		<tr>
-	    			<td>Password</td>
-	    			<td><input type="password" name="password" size="30"></td>
-	    		</tr>
-	    		<tr>
-	    			<td colspan="2" align="center"> <input type="submit" name="btn_submit" value="Đăng nhập"></td>
-	    		</tr>
-	    	</table>
-  </fieldset>
-  </form>
+
+<h1>Đăng nhập</h1>
+  <?php if (!$success) : ?>
+  <div class="alert alert-danger" role="alert">
+    Email và mật khẩu không hợp lệ vui lòng đăng nhập lại!
+  </div>
+  <?php endif; ?>
+<form method="POST">
+  <div class="form-group">
+    <label for="email">Địa chỉ email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Điền email vào đây" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
+  </div>
+  <div class="form-group">
+    <label for="password">Mật khẩu</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Điền mật khẩu vào đây">
+  </div>
+  <button type="submit" class="btn btn-primary">Đăng nhập</button>
+</form>
