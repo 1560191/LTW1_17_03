@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 // Gán biến page giống với tên file
 $page = basename($_SERVER['SCRIPT_NAME'], '.php');
 // Kết nối CSDL
-$db = new PDO('mysql:host=localhost;dbname=id4067370_ltw1;charset=utf8', 'id4067370_nhom3', 'nhom3');
+$db = new PDO('mysql:host=localhost;dbname=id4067370_nhom3;charset=utf8', 'id4067370_nhom3', 'nhom3');
 // Kiểm tra thông tin người dùng
 $currentUser = null;
 require_once 'functions.php';

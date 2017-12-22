@@ -1,3 +1,4 @@
+<?php require_once 'connection.php' ?>
 <?php include "header.php" ?>
 <div class="clearfix"></div>
          

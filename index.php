@@ -1,4 +1,10 @@
+<?php require_once 'connection.php' ?>
 <?php include "header.php" ?>
+<?php if ($currentUser) : ?>
+Chào mừng <?php echo $currentUser['fullname'] ?> đã trở lại.
+<?php else: ?>
+Bạn chưa đăng nhập
+<?php endif ?>
 <div class="clearfix"></div>
          
             <div class="promotion-banner">

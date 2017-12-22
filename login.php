@@ -17,8 +17,8 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
   }
 }
 ?>
-
-<h1>Đăng nhập</h1>
+<?php include 'header.php' ?>
+<h1><span style="color: white">Đăng Nhập</span></h1>
   <?php if (!$success) : ?>
   <div class="alert alert-danger" role="alert">
     Email và mật khẩu không hợp lệ vui lòng đăng nhập lại!
@@ -26,12 +26,13 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
   <?php endif; ?>
 <form method="POST">
   <div class="form-group">
-    <label for="email">Địa chỉ email</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="Điền email vào đây" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
+    <label for="email"></label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="Email đăng nhập..." value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>">
   </div>
   <div class="form-group">
-    <label for="password">Mật khẩu</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Điền mật khẩu vào đây">
+    <label for="password"></label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Mật khẩu...">
   </div>
   <button type="submit" class="btn btn-primary">Đăng nhập</button>
 </form>
+<?php include 'footer.php' ?>

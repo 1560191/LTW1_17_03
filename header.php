@@ -37,9 +37,26 @@
                               <li><a href="index.php">Trang Chủ</a></li>
                               <li><a href="loaisanpham.php">Danh Sách Sản Phẩm</a></li>
 							  <li><a href="nhasanxuat.php">Danh Sách Nhà Sản Xuất</a></li>
-							  <li><a href="login.php">Đăng Nhập</a></li>
-                              <li><a href="register.php">Đăng Ký</a></li>
-                              
+							  <?php if (!$currentUser) : ?>
+            					<li class="nav-item <?php echo ($page == 'login') ? 'active' : '' ?>">
+              					<a class="nav-link" href="login.php">Đăng nhập</a>
+            					</li>
+            				  <?php endif; ?>
+                              <?php if (!$currentUser) : ?>
+            					<li class="nav-item <?php echo ($page == 'register') ? 'active' : '' ?>">
+              					<a class="nav-link" href="register.php">Đăng ký</a>
+            					</li>
+            				  <?php endif; ?>
+                              <?php if ($currentUser) : ?>
+            					<li class="nav-item">
+              					<a class="nav-link" href="logout.php">Đăng xuất</a>
+            					</li>
+            					<li class="nav-item">
+              					<a class="nav-link disabled" href="#">
+                				<?php echo $currentUser['fullname'] ?>
+              					</a>
+            					</li>
+            				  <?php endif; ?>
                            </ul>
                         </div>
                      </div>
