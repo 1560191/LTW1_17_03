@@ -3,7 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 // Khởi tạo session
-//session_start();
+session_start();
 // Gán biến page giống với tên file
 $page = basename($_SERVER['SCRIPT_NAME'], '.php');
 // Kết nối CSDL

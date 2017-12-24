@@ -1,9 +1,25 @@
 <?php require_once 'connection.php' ?>
 <?php include "header.php" ?>
+<?php
+   $sql="SELECT mahang,tensp,giatien,hinhanh,ngaynhap from sanpham group by tensp,giatien,hinhanh,ngaynhap order by soluongban desc limit 8";
+   $exe=$db->query($sql);
+   $exe->setFetchMode(PDO::FETCH_ASSOC);
+   $exe->execute();
+   $resultSet = $exe->fetchAll();
+   $sql1="SELECT mahang,tensp,giatien,hinhanh,soluongban from sanpham group by tensp,giatien,hinhanh,soluongban order by soluongban desc limit 8";
+   $exe1=$db->query($sql1);
+   $exe1->setFetchMode(PDO::FETCH_ASSOC);
+   $exe1->execute();
+   $resultSet1 = $exe1->fetchAll();
+   $sql2="SELECT mahang,tensp,giatien,hinhanh,soluotxem from sanpham group by tensp,giatien,hinhanh,soluotxem order by soluotxem desc limit 8";
+   $exe2=$db->query($sql2);
+   $exe2->setFetchMode(PDO::FETCH_ASSOC);
+   $exe2->execute();
+   $resultSet2 = $exe2->fetchAll();
+?>
 <?php if ($currentUser) : ?>
-Chào mừng <?php echo $currentUser['fullname'] ?> đã trở lại.
+<h6><span style="color: white">Chào mừng <?php echo $currentUser['fullname'] ?>!</span></h6><br>
 <?php else: ?>
-Bạn chưa đăng nhập
 <?php endif ?>
 <div class="clearfix"></div>
          
@@ -22,82 +38,17 @@ Bạn chưa đăng nhập
                   <ul id="hot">
                      <li>
                         <div class="row">
-                           <div class="col-md-3 col-sm-6">
+                           <?php foreach($resultSet as $row): ?>
+                            <div class="col-md-3 col-sm-6">
                               <div class="products">
                                  <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/1.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Ba Lô Loại 1</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
+                                 <div class="thumbnail"><a href="details.php"><img src="<?php echo $row['hinhanh'] ?>" alt="Product Name"></a></div>
+                                 <div class="productname"><?php echo $row['tensp'] ?></div>
+                                 <h4 class="price"><?php echo $row['giatien'] ?>đ</h4>
+                                 <div class="button_group"><button class="button add-cart" type="button"><a href="add.php?id=<?php echo $row['mahang']?>">Mua</button><button class="button compare" type="button"><a href="details.php?id=<?php echo $row['mahang'] ?>">Xem Thông Tin</button></div>
                               </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/7.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Ba Lô Loại 7</div>
-                                 <h4 class="price">999.000đ</h4>
-                                  <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								  </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-                                 <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/11.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Laptop Loại 1</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/14.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Laptop Loại 4</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                        </div>
-                     </li>
-                     <li>
-                        <div class="row">
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-                                 <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/21.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 1</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/23.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 3</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-                                 <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/40.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Xe Loại 10</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">New</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/33.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Xe Loại 3</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
+                            </div>
+                            <?php endforeach; ?>
                         </div>
                      </li>
                   </ul>
@@ -109,82 +60,17 @@ Bạn chưa đăng nhập
                   <ul id="featured">
                      <li>
                         <div class="row">
-                           <div class="col-md-3 col-sm-6">
+                           <?php foreach($resultSet1 as $row): ?>
+                            <div class="col-md-3 col-sm-6">
                               <div class="products">
-							  	 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/23.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại 3</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/29.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 9</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-                                 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/26.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 6</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/17.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Laptop Loại 7</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-					</li>
-					<li>
-						<div class="row">
-						   <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/4.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Ba Lô Loại 4</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-						
-						   <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/25.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 5</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-						   <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/16.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Laptop Loại 6</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-						   <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Hot</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/8.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Ba Lô Loại 8</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
+                                 <div class="offer">Số Lượng Bán: <?php echo $row['soluongban'] ?></div>
+                                 <div class="thumbnail"><a href="details.php"><img src="<?php echo $row['hinhanh'] ?>" alt="Product Name"></a></div>
+                                 <div class="productname"><?php echo $row['tensp'] ?></div>
+                                 <h4 class="price"><?php echo $row['giatien'] ?>đ</h4>
+                                 <div class="button_group"><button class="button add-cart" type="button"><a href="add.php?id=<?php echo $row['mahang'] ?>">Mua</button><button class="button compare" type="button"><a href="details.php?id=<?php echo $row['mahang'] ?>">Xem Thông Tin</button></div>
+                              </div>
+                            </div>
+                            <?php endforeach; ?>
                         </div>
 					</li>
 						
@@ -195,84 +81,17 @@ Bạn chưa đăng nhập
                   <ul id="featured">
                      <li>
                         <div class="row">
-                           <div class="col-md-3 col-sm-6">
+                           <?php foreach($resultSet2 as $row): ?>
+                            <div class="col-md-3 col-sm-6">
                               <div class="products">
-							  	 <div class="offer">Lượt Xem: 420</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/23.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 3</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Lượt Xem: 364</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/29.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 9</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-                                 <div class="offer">Lượt Xem: 328</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/26.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 6</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Lượt Xem: 136</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/4.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Ba Lô Loại 4</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                        </div>
-						
-						
-                     </li>
-                     <li>
-                        <div class="row">
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Lượt Xem: 63</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/32.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Xe Loại 2</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Lượt Xem: 39</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/33.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Xe Loại 3</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Lượt Xem: 25</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/28.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Điện Thoại Loại 8</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								</div>
-                           </div>
-                           <div class="col-md-3 col-sm-6">
-                              <div class="products">
-							  	 <div class="offer">Lượt Xem: 8</div>
-                                 <div class="thumbnail"><a href="details.html"><img src="images/5.jpg" alt="Product Name"></a></div>
-                                 <div class="productname">Ba Lô Loại 5</div>
-                                 <h4 class="price">999.000đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button">Mua</button><button class="button compare" type="button">Xem Thông Tin</button></div>
-								 </div>
-                           </div>
+                                 <div class="offer">Số Lượt Xem: <?php echo $row['soluotxem'] ?></div>
+                                 <div class="thumbnail"><a href="details.php"><img src="<?php echo $row['hinhanh'] ?>" alt="Product Name"></a></div>
+                                 <div class="productname"><?php echo $row['tensp'] ?></div>
+                                 <h4 class="price"><?php echo $row['giatien'] ?>đ</h4>
+                                 <div class="button_group"><button class="button add-cart" type="button"><a href="add.php?id=<?php echo $row['mahang'] ?>">Mua</button><button class="button compare" type="button"><a href="details.php?id=<?php echo $row['mahang'] ?>">Xem Thông Tin</button></div>
+                              </div>
+                            </div>
+                            <?php endforeach; ?>
                         </div>
                      </li>
                   </ul>
