@@ -49,11 +49,12 @@
             					</li>
             				  <?php endif; ?>
                               <?php if ($currentUser) : ?>
-            					<li class="nav-item">
-              					<a class="nav-link" href="logout.php">Đăng xuất</a>
-            					</li>
+            					
             					<li class="nav-item">
               					<a class="nav-link" href="capnhaptt.php">Cập Nhập Thông Tin</a>
+            					</li>
+								<li class="nav-item">
+              					<a class="nav-link" href="logout.php">Đăng xuất</a>
             					</li>
             				  <?php endif; ?>
                            </ul>

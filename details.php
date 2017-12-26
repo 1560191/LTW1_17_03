@@ -97,7 +97,13 @@
                   <div class="wided">
                     
                     <div class="button_group">
-                        <button class="button add-cart" type="button"><a href="add.php?id=<?php echo $row['mahang'] ?>">Mua</button>
+                        <button class="button add-cart" type="button">
+                            <?php if (!$currentUser) : ?>
+                                <h8>Đăng Nhập Để Mua Hàng</h8>
+                            <?php else: ?>
+                                <a href="add.php?id=<?php echo $row['mahang'] ?>">Mua
+                            <?php endif ?>
+                        </button>
                     </div>
                   </div>
                   <div class="clearfix">
@@ -127,7 +133,17 @@
                                  <div class="thumbnail"><a href="details.php"><img src="<?php echo $row['hinhanh'] ?>" alt="Product Name"></a></div>
                                  <div class="productname"><?php echo $row['tensp'] ?></div>
                                  <h4 class="price"><?php echo $row['giatien'] ?>đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button"><a href="add.php?id=<?php echo $row['mahang']?>">Mua</button><button class="button compare" type="button"><a href="details.php?id=<?php echo $row['mahang'] ?>">Xem Thông Tin</button></div>
+                                 <div class="button_group">
+                                     <button class="button add-cart" type="button">
+                                     <?php if (!$currentUser) : ?>
+                                        <h8>Đăng Nhập Để Mua Hàng</h8>
+                                     <?php else: ?>
+                                     <a href="add.php?id=<?php echo $row['mahang']?>">Mua</button>
+                                     <?php endif ?>
+                                     <button class="button compare" type="button">
+                                         <a href="details.php?id=<?php echo $row['mahang'] ?>">Xem Thông Tin
+                                         </button>
+                                 </div>
                               </div>
                             </div>
                             <?php endforeach; ?>
@@ -154,7 +170,17 @@
                                  <div class="thumbnail"><a href="details.php"><img src="<?php echo $row['hinhanh'] ?>" alt="Product Name"></a></div>
                                  <div class="productname"><?php echo $row['tensp'] ?></div>
                                  <h4 class="price"><?php echo $row['giatien'] ?>đ</h4>
-                                 <div class="button_group"><button class="button add-cart" type="button"><a href="add.php?id=<?php echo $row['mahang']?>">Mua</button><button class="button compare" type="button"><a href="details.php?id=<?php echo $row['mahang'] ?>">Xem Thông Tin</button></div>
+                                 <div class="button_group">
+                                     <button class="button add-cart" type="button">
+                                     <?php if (!$currentUser) : ?>
+                                        <h8>Đăng Nhập Để Mua Hàng</h8>
+                                     <?php else: ?>
+                                     <a href="add.php?id=<?php echo $row['mahang']?>">Mua</button>
+                                     <?php endif ?>
+                                     <button class="button compare" type="button">
+                                         <a href="details.php?id=<?php echo $row['mahang'] ?>">Xem Thông Tin
+                                         </button>
+                                 </div>
                               </div>
                             </div>
                             <?php endforeach; ?>
