@@ -71,7 +71,7 @@
                       </h5>
                     </td>
                     <td>
-                      <a href="#">
+                      <a href="index.php">
                         <img src="images/remove.png" alt="">
                       </a>
                     </td>
@@ -87,7 +87,7 @@
                     <h5>
                       Thông tin khách hàng
                     </h5>
-                    <form>
+                    
                       <label>
                         Địa Chĩ:
                       </label>
@@ -102,7 +102,7 @@
                       <button>
                         Xác Nhận
                       </button>
-                    </form>
+                    
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
@@ -110,7 +110,7 @@
                     <h5>
                       Mã Giảm Giá
                     </h5>
-                    <form>
+                    
                       <label>
                         Điền mã giảm giá vào đây:
                       </label>
@@ -120,7 +120,7 @@
                       <button>
                         Xác Nhận
                       </button>
-                    </form>
+                    
                   </div>
                 </div>
                 <div class="col-md-4 col-sm-6">
@@ -134,7 +134,7 @@
                       </span>
                     </div>
                     <button>
-                      Xác Nhận Mua Hàng
+                      <a href="muahang.php?id=<?php echo $row['mahang'] ?>">Xác Nhận Mua Hàng
                     </button>
                   </div>
                 </div>

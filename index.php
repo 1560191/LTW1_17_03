@@ -1,7 +1,7 @@
 <?php require_once 'connection.php' ?>
 <?php include "header.php" ?>
 <?php
-   $sql="SELECT mahang,tensp,giatien,hinhanh,ngaynhap from sanpham group by tensp,giatien,hinhanh,ngaynhap order by soluongban desc limit 8";
+   $sql="SELECT mahang,tensp,giatien,hinhanh,ngaynhap from sanpham group by tensp,giatien,hinhanh,ngaynhap order by ngaynhap desc limit 8";
    $exe=$db->query($sql);
    $exe->setFetchMode(PDO::FETCH_ASSOC);
    $exe->execute();
@@ -17,10 +17,6 @@
    $exe2->execute();
    $resultSet2 = $exe2->fetchAll();
 ?>
-<?php if ($currentUser) : ?>
-<h6><span style="color: white">Chào mừng <?php echo $currentUser['fullname'] ?>!</span></h6><br>
-<?php else: ?>
-<?php endif ?>
 <div class="clearfix"></div>
          
             <div class="promotion-banner">

@@ -28,17 +28,27 @@
                      <div class="header_bottom">
                         <ul class="option">
                            <li id="search" class="search">
-                              <form><input class="search-submit" type="submit" value=""><input class="search-input" placeholder="Nhập Tên Sản Phẩm..." type="text" value="" name="search"></form>
+                              <form action="search.php" method = "get">
+                              <input class="search-submit" type="submit" value="">
+                              <input class="search-input" type="text" value="" name="search">
+                              </form>
                            </li>
                            
+                          
                         </ul>
                         <div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
                         <div class="navbar-collapse collapse">
                            <ul class="nav navbar-nav">
+                              <ul class="option_nav">
                               <li><a href="index.php">Trang Chủ</a></li>
-                              <li><a href="loaisanpham.php">Danh Sách Sản Phẩm</a></li>
-							  <li><a href="nhasanxuat.php">Danh Sách Nhà Sản Xuất</a></li>
-							  <?php if (!$currentUser) : ?>
+                              <li class="dorpdown">
+                                    <a href="#">Danh Sách Sản Phẩm</a>
+                                    <ul class="subnav">
+                                       <li><a href="loaisanpham.php">Loại Sản Phẩm</a></li>
+							           <li><a href="nhasanxuat.php">Nhà Sản Xuất</a></li>
+                                    </ul>
+                              </li>
+                              <?php if (!$currentUser) : ?>
             					<li class="nav-item <?php echo ($page == 'login') ? 'active' : '' ?>">
               					<a class="nav-link" href="login.php">Đăng nhập</a>
             					</li>
@@ -49,14 +59,17 @@
             					</li>
             				  <?php endif; ?>
                               <?php if ($currentUser) : ?>
-            					
+            					<li class="nav-item">
+              					<a class="nav-link" href="lichsumua.php?id=<?php echo $currentUser['id'] ?>">Lịch Sử Mua Hàng</a>
+            					</li>
             					<li class="nav-item">
               					<a class="nav-link" href="capnhaptt.php">Cập Nhập Thông Tin</a>
             					</li>
-								<li class="nav-item">
+            					<li class="nav-item">
               					<a class="nav-link" href="logout.php">Đăng xuất</a>
             					</li>
             				  <?php endif; ?>
+                              </ul>
                            </ul>
                         </div>
                      </div>
