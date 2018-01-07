@@ -1,11 +1,11 @@
 <?php require_once 'connection.php' ?>
-<?php if ($currentUser) : ?>
+<?php if (!$currentUser) : ?>
 <center>
     <h1>Bạn Chưa Đăng Nhập!</h1>
     <br><a href="admin.php">Click vào đây để đăng nhập</a>
 </center>
 <?php endif; ?>
-<?php if (!$currentUser) : ?>
+<?php if ($currentUser) : ?>
     <?php
         if(!empty($_POST['id']))
         {

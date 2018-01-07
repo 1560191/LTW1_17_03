@@ -1,20 +1,35 @@
 <?php 
 require_once 'connection.php';
 $success = true;
-if (!empty($_POST['email']) && !empty($_POST['password'])) {  
+if (!empty($_POST['email']) && !empty($_POST['password'])) 
+{  
+  $name = $_POST['email'];
   $user = findUserByEmail($_POST['email']);
-  if ($user['email'] == 'admin@gmail.com') {
-    if (password_verify($_POST['password'], $user['password'])) {
-      $success = true;
-      $_SESSION['userId'] = $user['id'];
-      header('Location: index2.php');
-      exit();
-    } else {
+  if ($user) 
+   {
+      if ($name == 'admin@gmail.com') 
+         {
+            if (password_verify($_POST['password'], $user['password'])) 
+            {
+                $success = true;
+                $_SESSION['userId'] = $user['id'];
+                header('Location: index2.php');
+                exit();
+            }
+         }
+      else
+      {
+        $success = false;  
+      }
+    } 
+    else 
+    {
       $success = false;
     }      
-  } else {
+} 
+else 
+{
     $success = false;
-  }
 }
 ?>
 <!DOCTYPE html>

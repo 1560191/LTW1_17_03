@@ -12,10 +12,10 @@
             $resultSet = $exe->fetchAll();
             
             $sql2="UPDATE sanpham SET soluongban = soluongban+1 where mahang = '$mahang'";
-            $exe2=$db->query($sql2);
+            $exe2=$db->prepare($sql2);
             $exe2->execute();
             
-            $stmt = $db->prepare("INSERT INTO `donhang` (`mahang`, `idkhachhang`, `ngaylap`) VALUE (?, ?, curdate())");
+            $stmt = $db->prepare("INSERT INTO `donhang` (`mahang`, `idkhachhang`, `ngaylap`, `trangthai`) VALUE (?, ?, curdate(), 'Chưa Giao')");
             $stmt->execute(array($mahang, $currentUser['id']));
 		}
 ?>

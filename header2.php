@@ -41,8 +41,8 @@
               <ul class="nav navbar-nav">
                 <li class="active"><a href="index2.php">Dashboard</a></li>
                 <li><a href="qltaikhoan.php">Quản Lý Tài Khoản</a></li>
-                <li><a href="#">Quản Lý Sản Phẩm</a></li>
-                <li><a href="#">Quản Lý Đơn Hàng</a></li>
+                <li><a href="qlsanpham.php">Quản Lý Sản Phẩm</a></li>
+                <li><a href="qldonhang.php">Quản Lý Đơn Hàng</a></li>
               </ul>
             </div>
           </div>
@@ -57,8 +57,8 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="active"><a href="index2.php">Dashboard</a></li>
         <li style="background-color:Gray;"><a href="qltaikhoan.php" style="color: white">Quản Lý Tài Khoản</a></li>
-        <li style="background-color:Gray;"><a href="#" style="color: white">Quản Lý Sản Phẩm</a></li>
-        <li style="background-color:Gray;"><a href="#" style="color: white">Quản Lý Đơn Hàng</a></li>
+        <li style="background-color:Gray;"><a href="qlsanpham.php" style="color: white">Quản Lý Sản Phẩm</a></li>
+        <li style="background-color:Gray;"><a href="qldonhang.php" style="color: white">Quản Lý Đơn Hàng</a></li>
       </ul><br>
     </div>
     <br>

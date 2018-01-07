@@ -1,11 +1,11 @@
 <?php require_once 'connection.php' ?>
-<?php if ($currentUser) : ?>
+<?php if (!$currentUser) : ?>
 <center>
     <h1>Bạn Chưa Đăng Nhập!</h1>
     <br><a href="admin.php">Click vào đây để đăng nhập</a>
 </center>
 <?php endif; ?>
-<?php if (!$currentUser) : ?>
+<?php if ($currentUser) : ?>
     <?php include"header2.php" ?>
     <?php
     	    $sql="SELECT * from donhang order by ngaylap desc limit 2";
